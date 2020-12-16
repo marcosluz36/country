@@ -1,0 +1,12 @@
+{
+  "name": "country",
+  "displayName": "country",
+  "expo": {
+    "name": "country",
+    "slug": "country",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
