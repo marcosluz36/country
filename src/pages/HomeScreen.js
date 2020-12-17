@@ -10,7 +10,7 @@ const width = Dimensions.get('screen').width;
 
 export default function HomeScreen() {
 
-  //const [country, setCountry] = useState('...');
+
   const [countries, setCountries] = useState([
     {'name':"A"},
     {'name':"B"},
@@ -18,10 +18,7 @@ export default function HomeScreen() {
   ])
 
   useEffect(() => {
-    // api.get(`name/brasil`).then((resp)=>{
-    //   //alert(resp.data[0].region);
-    //   //setCountry(resp.data)
-    // });
+    // ...
   },[])
 
   function setCountry(text) {
@@ -29,7 +26,6 @@ export default function HomeScreen() {
       if(text.length>=1){
         setCountries(resp.data)
         
-        //setCountry(resp.data[0].region);  
       } 
       
       else {
@@ -50,15 +46,7 @@ export default function HomeScreen() {
         style={styles.input}
         onChangeText={text => setCountry(text)}
       />
-      
-      {/* <FlatList
-        style={styles.list}
-        data={countries}
-        keyExtractor={c=>c.name}
-        renderItem={(item)=>(
-          <Item name={item.name}/>
-        )}
-      /> */}
+        
       <ScrollView style={styles.list}>
         {countries.map(e=><Item name={e.name}/>)}
       </ScrollView>
