@@ -11,11 +11,7 @@ const width = Dimensions.get('screen').width;
 export default function HomeScreen() {
 
 
-  const [countries, setCountries] = useState([
-    {'name':"A"},
-    {'name':"B"},
-    {'name':"C"},
-  ])
+  const [countries, setCountries] = useState([])
 
   useEffect(() => {
     // ...
@@ -48,7 +44,7 @@ export default function HomeScreen() {
       />
         
       <ScrollView style={styles.list}>
-        {countries.map(e=><Item name={e.name}/>)}
+        {countries.map((e,idx)=><Item key={idx} name={e.name}/>)}
       </ScrollView>
 
     </View>
