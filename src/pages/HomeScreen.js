@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, TextInput, Text, View, Image, Dimensions} from 'react-native';
+import { StyleSheet, TextInput, Text, View, Image, Dimensions, ActivityIndicator} from 'react-native';
 import {ScrollView } from 'react-native-gesture-handler';
 import api from '../../utils/api';
 import Item from '../components/Item';
@@ -12,24 +12,23 @@ export default function HomeScreen() {
 
 
   const [countries, setCountries] = useState([])
+  const [isLoaded, setIsLoaded] = useState(true)
 
   useEffect(() => {
     // ...
   },[])
 
   function setCountry(text) {
+    setIsLoaded(false)
     api.get(`name/${text}`).then((resp) => {
-      if(text.length>=1){
-        setCountries(resp.data)
-        
-      } 
-      
-      else {
-        setCountries([])
-      }
+      //if(text.length>=3){
+      setCountries(resp.data)
 
     }).catch((e) => {
       setCountries([])
+      
+    }).finally(()=>{
+      setIsLoaded(true)
     })
       
   }
@@ -43,8 +42,13 @@ export default function HomeScreen() {
         onChangeText={text => setCountry(text)}
       />
         
-      <ScrollView style={styles.list}>
-        {countries.map((e,idx)=><Item key={idx} name={e.name}/>)}
+      <ScrollView style={[styles.list/*, {backgroundColor: !isLoaded?"#58F":null}*/]}>
+        <View style={styles.listContainer}>
+          {isLoaded?
+            countries.map((e,idx)=><Item key={idx} name={e.name}/>):
+            <ActivityIndicator style={{marginTop: 50}} size="large" color="#507"/>
+          }
+        </View>
       </ScrollView>
 
     </View>
@@ -76,5 +80,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
+  },
+  listContainer:{
+    width: '100%',
+    alignItems: 'center',
+    //backgroundColor: 'red',
+    
   }
 });
