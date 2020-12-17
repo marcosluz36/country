@@ -4,4 +4,4 @@ const api = axios.create({
   baseURL: 'https://restcountries.eu/rest/v2/'
 });
 
-export default axios;
+export default api;
