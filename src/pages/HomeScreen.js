@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, TextInput, Text, View, Image, Dimensions} from 'react-native';
-import api from '../utils';
-import Title from '../src/components/Title';
+import api from '../../utils/api';
+import Title from '../components/Title';
 
 const width = Dimensions.get('screen').width;
 
