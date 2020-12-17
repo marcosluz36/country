@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, TextInput, Text, View, Image, Dimensions} from 'react-native';
-import api from '../utils';
-import Title from '../src/components/Title';
+import api from '../../utils/api';
+import Title from '../components/Title';
 
 const width = Dimensions.get('screen').width;
 
@@ -34,15 +34,16 @@ export default function HomeScreen() {
   }
 
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <Title/>
-      <TextInput
-        style={styles.input}
-        onChangeText={text => setRegion(text)}
-      />
-      <Text>Região: {country}.</Text>
-    </View>
+
+      <View style={styles.container}>
+        <Title/>
+        <TextInput
+          style={styles.input}
+          onChangeText={text => setRegion(text)}
+        />
+        <Text>Região: {country}.</Text>
+      </View>
+    
   );
 }
 
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F2F5F5',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   input: {
     width: width * 0.8,
