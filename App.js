@@ -1,20 +1,24 @@
-// In App.js in a new project
-
 import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {View, Text } from 'react-native';
+import AppLoading from 'expo-app-loading';
+import { StatusBar } from 'expo-status-bar';
+import AppStack from './routes/AppStack';
+import { Poppins_300Ligth, Poppins_900Black , Poppins_500Medium, useFonts } from '@expo-google-fonts/poppins';
 
-import HomeScreen from './src/pages/HomeScreen';
-
-const Stack = createStackNavigator();
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+  let [fontsLoaded] = useFonts({
+    Poppins_300Ligth,
+    Poppins_900Black,
+    Poppins_500Medium
+  });
+
+  if(!fontsLoaded){
+    return <AppLoading/>
+  }else{
+    return (
+      <AppStack/>
+    );
+  }
+  
 }
