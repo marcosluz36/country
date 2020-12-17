@@ -15,12 +15,19 @@ export default Item;
 
 const styles = StyleSheet.create({
   container: {
-    width: 100,
-    backgroundColor: '#82B',
-    height: 50,
-    margin: 10
+    minWidth: '95%',
+    maxWidth: '95%',
+    backgroundColor: '#74B',
+    minHeight: 60,
+    marginVertical: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 5,
+    borderRadius: 10
   },
   text:{
-    color: '#FFF'
+    color: '#FFF',
+    fontSize: 20,
+    fontWeight: 'bold'
   }
 });
