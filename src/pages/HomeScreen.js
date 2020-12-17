@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F2F5F5',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   input: {
     width: width * 0.8,
