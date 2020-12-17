@@ -5,25 +5,34 @@ import api from '../../utils/api';
 import Title from '../components/Title';
 
 
+function Informations(props){
+  return(
+    <View style={styles.informations}>
+      <Text style={styles.text}>{props.text}</Text>
+      <Text style={styles.subText}>{props.subText}</Text>
+    </View>
+  )
+}
+
 export default function CountryDetails() {
 
   return (
     <View style={styles.container}>
-        <Title />
-        <Image />
-        <Text>Nome do País</Text>
-        <View>
+        <View style={styles.header}>
+          <Image source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/125px-Flag_of_Brazil.svg.png'}} style={styles.image} />
+          <Text style={styles.name}>Nome do País</Text>
+        </View>
+        <Text />
+        <View style={styles.results}>
           <View style={styles.lines}>
-            <Text>Região</Text>
-            <Text>Sub-região</Text>
+            <Informations text={"Região:"} subText={"Americas"} />
+            <Informations text={"População:"} subText={"Americas"} />
+            <Informations text={"Moeda:"} subText={"Americas"} />
           </View>
           <View style={styles.lines}>
-            <Text>População</Text>
-            <Text>Idioma</Text>
-          </View>
-          <View style={styles.lines}>
-            <Text>Moeda</Text>
-            <Text>Bloco Econômico</Text>
+            <Informations text={"Sub-Região:"} subText={"Americas"} />
+            <Informations text={"Idioma:"} subText={"Americas"} />
+            <Informations text={"Bloco Econômico:"} subText={"Americas"} />
           </View>
         </View>
     </View>
@@ -34,10 +43,50 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F2F5F5',
+    paddingVertical: 20,
+  },
+  header: {
+    flex: 3,
     alignItems: 'center',
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+  },
+  image:{
+    flex: 2,
+    width: 260,
+    height: 150,
+  },
+  name: {
+    flex: 1,
+    fontSize: 32,
+    marginVertical: 10
+  },
+  results:{
+    flex: 3,
     justifyContent: 'center',
+    flexDirection: 'row'
   },
   lines: {
-    
+    flex: 1,
+    marginVertical: 5,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  informations: {
+    flex: 1,
+    alignItems: 'center',
+    padding: 10,
+    marginVertical: 10
+  },
+  text: {
+    flex: 1,
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'purple',
+    marginBottom: 10
+  },
+  subText: {
+    flex: 1,
+    fontSize: 16
   }
 });
