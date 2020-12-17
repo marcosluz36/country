@@ -58,6 +58,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 60,
     backgroundColor: '#F2F5F5',
     alignItems: 'center',
     justifyContent: 'flex-start',
