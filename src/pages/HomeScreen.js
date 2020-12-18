@@ -80,8 +80,12 @@ export default function HomeScreen() {
                 default:
                   break
               }
-              return(<Item key={idx} name={e.name}
-              complement={comp}
+              return(
+              <Item
+                key={idx}
+                name={e.name}
+                complement={comp}
+                click={()=> navigation.navigate('CountryDetails')}
               />)
             }):
             <ActivityIndicator style={{marginTop: 50}} size="large" color="#507"/>
