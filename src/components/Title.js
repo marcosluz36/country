@@ -1,19 +1,26 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image } from 'react-native';
-import {RectButton } from 'react-native-gesture-handler'
+import {RectButton } from 'react-native-gesture-handler';
 import { Entypo, MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 import globe from "../../images/earth.png";
 import arrow from '../../images/left-arrow.png';
 
-const Title = ({page, action}) => {
+export default function Title({action}){
+  // let show = action ? true : false;
+  const { goBack } = useNavigation();
+
+  function handleGoBack(){
+      goBack();
+  }
+
   return(
     <View style={styles.conteiner}>
       <View style={styles.content}>
-        {action ? <Image style={styles.icons}source={arrow}/> : null }
-        {/* <Image style={styles.icons}source={arrow}/> */}
+        {action && (<RectButton onPress={handleGoBack}><Image style={styles.icons}source={arrow}/></RectButton>)}
         <View style={styles.title}>
-          <Text style={styles.titleText}>Que País É Esse?</Text>
+          <Text style={styles.titleText}>Que País é Esse?</Text>
           <Image source={globe} style={[styles.iconTitle]}/>
         </View>
         
@@ -27,8 +34,6 @@ const Title = ({page, action}) => {
     
   );
 }
-
-export default Title;
 
 const styles = StyleSheet.create({
   conteiner: {
@@ -57,14 +62,14 @@ const styles = StyleSheet.create({
 
   },
   titleText:{
-    fontFamily: 'Poppins_300Ligth',
+    fontFamily: 'Aclonica_400Regular',
     fontSize: 30,
     color: 'purple',
     flexDirection: 'row',
     justifyContent: 'center'
   },
   iconTitle: {
-    marginLeft: 20,
+    marginLeft: 10,
     height: 30,
     width: 30
   }
