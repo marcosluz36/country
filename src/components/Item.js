@@ -4,14 +4,17 @@ import {TouchableOpacity} from 'react-native-gesture-handler'
 //import { Octicons, MaterialIcons } from '@expo/vector-icons';
 
 const Item = ({name, complement=null, click}) => {
+  let align = complement ? 'right' : 'center';
+  let space = complement ? 'space-between' : 'center';
+
   return(
-    <TouchableOpacity style={styles.container}  onPress={click}>
+    <TouchableOpacity style={[styles.container, {justifyContent: space}]}  onPress={click}>
 
         {complement?
           <Text style={styles.complement}>{complement}</Text>:
           null
         }
-        <Text style={styles.text}>{name}</Text>
+        <Text style={[styles.text, {textAlign: align}]}>{name}</Text>
         
     </TouchableOpacity>
   );
@@ -26,16 +29,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#74B',
     minHeight: 60,
     marginVertical: 5,
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
     padding: 5,
     borderRadius: 10,
     flexDirection: 'row',
+    paddingHorizontal: 10
   },
   text:{
     color: '#FFF',
     fontSize: 20,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    maxWidth: '80%'
   },
   complement:{
     color: 'white'

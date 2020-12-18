@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
 
   },
   titleText:{
-    fontFamily: 'Aclonica_400Regular',
     fontSize: 30,
+    fontWeight: 'bold',
     color: 'purple',
     flexDirection: 'row',
     justifyContent: 'center'

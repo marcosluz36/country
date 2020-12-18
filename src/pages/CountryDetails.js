@@ -65,27 +65,31 @@ const styles = StyleSheet.create({
   },
   results:{
     flex: 3,
-    justifyContent: 'center',
-    flexDirection: 'row'
+    alignSelf: 'center',
+    width: '90%',
+    flexDirection: 'row',
+    // justifyContent: 'center',
+    alignItems: 'flex-start'
   },
   lines: {
     flex: 1,
-    marginVertical: 5,
-    alignItems: 'center',
+    width: '50%',
+    alignItems: 'flex-start',
     justifyContent: 'space-between',
   },
   informations: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
     padding: 10,
-    marginVertical: 10
+    // marginVertical: 10
   },
   text: {
     flex: 1,
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     color: 'purple',
-    marginBottom: 10
+    // marginBottom: 
   },
   subText: {
     flex: 1,
