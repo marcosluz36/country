@@ -5,6 +5,7 @@ import api from '../../utils/api';
 import Title from '../components/Title';
 
 
+
 function Informations(props){
   return(
     <View style={styles.informations}>
@@ -18,6 +19,7 @@ export default function CountryDetails() {
 
   return (
     <View style={styles.container}>
+      <Title action={true}/>
         <View style={styles.header}>
           <Image source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/125px-Flag_of_Brazil.svg.png'}} style={styles.image} />
           <Text style={styles.name}>Nome do País</Text>
