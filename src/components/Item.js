@@ -3,9 +3,9 @@ import {StyleSheet, Text, View, Image } from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler'
 //import { Octicons, MaterialIcons } from '@expo/vector-icons';
 
-const Item = ({name, complement=null}) => {
+const Item = ({name, complement=null, click}) => {
   return(
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container}  onPress={click}>
 
         {complement?
           <Text style={styles.complement}>{complement}</Text>:

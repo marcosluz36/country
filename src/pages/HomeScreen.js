@@ -3,6 +3,8 @@ import React, {useState, useEffect} from 'react';
 import { StyleSheet, TextInput, Text, View, Image, Dimensions, ActivityIndicator} from 'react-native';
 import {ScrollView } from 'react-native-gesture-handler';
 import {Picker} from '@react-native-picker/picker'
+import { useNavigation } from '@react-navigation/native';
+
 import api from '../../utils/api';
 import Item from '../components/Item';
 import Title from '../components/Title';
@@ -15,6 +17,8 @@ export default function HomeScreen() {
   const [countries, setCountries] = useState([])
   const [isLoaded, setIsLoaded] = useState(true)
   const [searchOption, setSearchOption] = useState("name")
+
+  const navigation = useNavigation();
 
   useEffect(() => {
     api.get("all").then((resp)=>{
