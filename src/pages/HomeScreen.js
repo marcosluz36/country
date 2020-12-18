@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, TextInput, Text, View, Image, Dimensions, ActivityIndicator} from 'react-native';
 import {ScrollView } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+
 import api from '../../utils/api';
 import Item from '../components/Item';
 import Title from '../components/Title';
@@ -13,6 +15,8 @@ export default function HomeScreen() {
 
   const [countries, setCountries] = useState([])
   const [isLoaded, setIsLoaded] = useState(true)
+
+  const navigation = useNavigation();
 
   useEffect(() => {
     // ...
@@ -45,7 +49,7 @@ export default function HomeScreen() {
       <ScrollView style={[styles.list/*, {backgroundColor: !isLoaded?"#58F":null}*/]}>
         <View style={styles.listContainer}>
           {isLoaded?
-            countries.map((e,idx)=><Item key={idx} name={e.name}/>):
+            countries.map((e,idx)=><Item key={idx} name={e.name} click={()=> navigation.navigate('CountryDetails')} />):
             <ActivityIndicator style={{marginTop: 50}} size="large" color="#507"/>
           }
         </View>
