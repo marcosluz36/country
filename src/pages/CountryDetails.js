@@ -1,9 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, TextInput, Text, View, Image, Dimensions} from 'react-native';
-import api from '../../utils/api';
+import { StyleSheet, Image, Text, View, Dimensions} from 'react-native';
 import Title from '../components/Title';
-
 
 
 function Informations(props){
@@ -15,28 +13,32 @@ function Informations(props){
   )
 }
 
-export default function CountryDetails() {
-
+export default function CountryDetails({ route, navigation }) {
+  const { countryValues } = route.params;
+  const regionBlock = countryValues.regionalBlocs[0] === undefined ? 'N/A' : countryValues.regionalBlocs[0].acronym;
   return (
     <View style={styles.container}>
       <Title action={true}/>
-        <View style={styles.header}>
-          <Image source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/125px-Flag_of_Brazil.svg.png'}} style={styles.image} />
-          <Text style={styles.name}>Nome do País</Text>
+      <View style={styles.header}>
+        <Image 
+          source={{uri: `https://flagcdn.com/224x168/${countryValues.alpha2Code.toLowerCase()}.png`}}
+          style={styles.image}
+          />
+        <Text style={styles.name}>{countryValues.translations.pt}</Text>
+      </View>
+      <Text />
+      <View style={styles.results}>
+        <View style={styles.lines}>
+          <Informations text={"Região:"} subText={countryValues.region} />
+          <Informations text={"População:"} subText={countryValues.population} />
+          <Informations text={"Moeda:"} subText={countryValues.currencies[0].name} />
         </View>
-        <Text />
-        <View style={styles.results}>
-          <View style={styles.lines}>
-            <Informations text={"Região:"} subText={"Americas"} />
-            <Informations text={"População:"} subText={"Americas"} />
-            <Informations text={"Moeda:"} subText={"Americas"} />
-          </View>
-          <View style={styles.lines}>
-            <Informations text={"Sub-Região:"} subText={"Americas"} />
-            <Informations text={"Idioma:"} subText={"Americas"} />
-            <Informations text={"Bloco Econômico:"} subText={"Americas"} />
-          </View>
+        <View style={styles.lines}>
+          <Informations text={"Sub-Região:"} subText={countryValues.subregion} />
+          <Informations text={"Idioma:"} subText={countryValues.languages[0].name} />
+          <Informations text={"Bloco Econômico:"} subText={regionBlock} />
         </View>
+      </View>
     </View>
   );
 }
@@ -54,9 +56,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   image:{
-    flex: 2,
-    width: 260,
-    height: 150,
+    alignSelf: 'center',
+    flex: 1,
+    resizeMode: 'contain',
+    width: 224,
+    height: 168
   },
   name: {
     flex: 1,
