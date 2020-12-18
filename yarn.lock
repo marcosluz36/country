@@ -1059,6 +1059,11 @@
   dependencies:
     "@types/hammerjs" "^2.0.36"
 
+"@expo-google-fonts/aclonica@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/aclonica/-/aclonica-0.1.0.tgz#eb4e1f07165bb4441a5f328cffd08228324994bd"
+  integrity sha512-+5wxofiFT87B1lQ27+yT8fSap5JV94X5LFGK6OM0X8dbBAO5ovYOKp3F8sp9KTEOqOXdxn7EYuS/JopO/j8RNA==
+
 "@expo-google-fonts/poppins@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/poppins/-/poppins-0.1.0.tgz#aae4df9e80d68ec9dc6764e57dc931f1f64016cd"

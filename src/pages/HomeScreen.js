@@ -11,6 +11,10 @@ import Title from '../components/Title';
 
 const width = Dimensions.get('screen').width;
 
+const heightSearch = 50;
+const borderRadiusGeral = 10;
+const fontSizeGeral = 18;
+
 export default function HomeScreen() {
 
 
@@ -50,16 +54,18 @@ export default function HomeScreen() {
         <TextInput
           style={styles.input}
           onChangeText={text => setCountry(text)}
+          placeholder="Digite aqui"
         />
         <View style={styles.pickerView}>
           <Picker
             selectedValue= {searchOption}
-            style={{width: "100%", height:45}}
-            onValueChange={(itemValue)=>setSearchOption(itemValue)}
+            style={{width: "100%", fontSize: 23}}
+            onValueChange={(itemValue)=>setSearchOption(itemValue)
+             }
           >
-            <Picker.Item color="red" label="nome" value="name"/>
-            <Picker.Item color="blue" label="região" value="region"/>
-            <Picker.Item color="orange" label="capital" value="capital"/>
+            <Picker.Item  label="Nome" value="name"/>
+            <Picker.Item  label="Região" value="region"/>
+            <Picker.Item  label="Capital" value="capital"/>
     
           </Picker>
         </View>
@@ -106,32 +112,37 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   search:{
-    flexDirection:'row',
+    flexDirection:'column',
     justifyContent: 'space-between',
-    width: '95%',
-    paddingHorizontal: 5
+    width: '97%',
+    paddingHorizontal: 5,
   },
   input: {
-    width: '65%',
-    height: 45,
-    borderRadius: 25,
-    borderColor: 'gray', 
+    width: '100%',
+    height: heightSearch,
+    borderRadius: borderRadiusGeral,
+    borderColor: '#74B', 
     borderWidth: 1,
-    paddingHorizontal: 15 
+    paddingHorizontal: 10,
+    fontSize: fontSizeGeral,
   },
   pickerView:{
-    width: '30%',
-    borderRadius: 25,
+    width: '100%',
+    height: heightSearch,
+    marginTop: 12,
+    borderRadius: borderRadiusGeral,
     borderWidth: 1,
     borderColor: 'gray',
-    backgroundColor: '#7CF'
+    fontSize: fontSizeGeral,
+    color: 'purple',
+    backgroundColor: '#74B'
   },
 
   list:{
     marginTop:15,
-    width: '95%',
+    width: '100%',
     borderColor: '#58F',
-    borderWidth: 2,
+    // borderWidth: 2,
     borderRadius: 10,
     borderBottomWidth: 0,
     borderBottomLeftRadius: 0,

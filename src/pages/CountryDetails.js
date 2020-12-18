@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, Image, Text, View, Dimensions} from 'react-native';
+import Title from '../components/Title';
 
 
 function Informations(props){
@@ -17,6 +18,7 @@ export default function CountryDetails({ route, navigation }) {
   const regionBlock = countryValues.regionalBlocs[0] === undefined ? 'N/A' : countryValues.regionalBlocs[0].acronym;
   return (
     <View style={styles.container}>
+      <Title action={true}/>
       <View style={styles.header}>
         <Image 
           source={{uri: `https://flagcdn.com/224x168/${countryValues.alpha2Code.toLowerCase()}.png`}}
@@ -67,27 +69,31 @@ const styles = StyleSheet.create({
   },
   results:{
     flex: 3,
-    justifyContent: 'center',
-    flexDirection: 'row'
+    alignSelf: 'center',
+    width: '90%',
+    flexDirection: 'row',
+    // justifyContent: 'center',
+    alignItems: 'flex-start'
   },
   lines: {
     flex: 1,
-    marginVertical: 5,
-    alignItems: 'center',
+    width: '50%',
+    alignItems: 'flex-start',
     justifyContent: 'space-between',
   },
   informations: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
     padding: 10,
-    marginVertical: 10
+    // marginVertical: 10
   },
   text: {
     flex: 1,
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     color: 'purple',
-    marginBottom: 10
+    // marginBottom: 
   },
   subText: {
     flex: 1,
