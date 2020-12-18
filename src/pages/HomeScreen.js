@@ -85,7 +85,7 @@ export default function HomeScreen() {
                 key={idx}
                 name={e.name}
                 complement={comp}
-                click={()=> navigation.navigate('CountryDetails')}
+                click={()=> navigation.navigate('CountryDetails', {countryValues: e})}
               />)
             }):
             <ActivityIndicator style={{marginTop: 50}} size="large" color="#507"/>
