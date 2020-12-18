@@ -4,6 +4,7 @@ import { StyleSheet, TextInput, Text, View, Image, Dimensions, ActivityIndicator
 import {ScrollView } from 'react-native-gesture-handler';
 import {Picker} from '@react-native-picker/picker'
 import { useNavigation } from '@react-navigation/native';
+import wordCapitalize from '../../utils/functions';
 
 import api from '../../utils/api';
 import Item from '../components/Item';
@@ -69,8 +70,7 @@ export default function HomeScreen() {
     
           </Picker>
         </View>
-      </View>
-        
+      </View>   
       <ScrollView style={[styles.list/*, {backgroundColor: !isLoaded?"#58F":null}*/]}>
         <View style={styles.listContainer}>
           {isLoaded?
@@ -89,7 +89,7 @@ export default function HomeScreen() {
               return(
               <Item
                 key={idx}
-                name={e.name}
+                name={wordCapitalize(e.translations.pt)}
                 complement={comp}
                 click={()=> navigation.navigate('CountryDetails', {countryValues: e})}
               />)
