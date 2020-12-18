@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, Image, Text, View, Dimensions} from 'react-native';
 import Title from '../components/Title';
+import wordCapitalize from '../../utils/functions';
 
 
 function Informations(props){
@@ -24,7 +25,7 @@ export default function CountryDetails({ route, navigation }) {
           source={{uri: `https://flagcdn.com/224x168/${countryValues.alpha2Code.toLowerCase()}.png`}}
           style={styles.image}
           />
-        <Text style={styles.name}>{countryValues.translations.pt}</Text>
+        <Text style={styles.name}>{wordCapitalize(countryValues.translations.pt)}</Text>
       </View>
       <Text />
       <View style={styles.results}>
@@ -53,14 +54,13 @@ const styles = StyleSheet.create({
     flex: 3,
     alignItems: 'center',
     borderBottomColor: 'black',
-    borderBottomWidth: 1,
+    borderBottomWidth: 1
   },
   image:{
     alignSelf: 'center',
-    flex: 1,
     resizeMode: 'contain',
-    width: 224,
-    height: 168
+    width: 200,
+    height: 150
   },
   name: {
     flex: 1,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     marginVertical: 10
   },
   results:{
-    flex: 3,
+    flex: 4,
     alignSelf: 'center',
     width: '90%',
     flexDirection: 'row',
@@ -80,12 +80,13 @@ const styles = StyleSheet.create({
     width: '50%',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
+    paddingHorizontal: 20
   },
   informations: {
     flex: 1,
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    padding: 10,
+    padding: 1,
     // marginVertical: 10
   },
   text: {

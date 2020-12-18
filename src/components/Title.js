@@ -22,28 +22,22 @@ export default function Title({action}){
         <View style={styles.title}>
           <Text style={styles.titleText}>Que País é Esse?</Text>
           <Image source={globe} style={[styles.iconTitle]}/>
-        </View>
-        
-        
+        </View>    
       </View>
-        
-        
-        {/* <Entypo name="globe" size={24} color="black" /> */}
-      </View>
-      
-    
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   conteiner: {
     width: "100%",
-    padding: 20,
+    paddingVertical: 20,
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginBottom: 30
   },
   content: {
-    width: '90%',
+    width: '85%',
     flexDirection: 'row',
     // backgroundColor: 'gray',
     justifyContent: 'space-evenly',
