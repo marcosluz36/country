@@ -5,6 +5,8 @@ import {ScrollView } from 'react-native-gesture-handler';
 import {Picker} from '@react-native-picker/picker'
 import { useNavigation } from '@react-navigation/native';
 
+import Constants from 'expo-constants';
+
 import api from '../../utils/api';
 import Item from '../components/Item';
 import Title from '../components/Title';
@@ -145,7 +147,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 60,
+    paddingTop: Constants.statusBarHeight,
     backgroundColor: '#F2F5F5',
     alignItems: 'center',
     justifyContent: 'flex-start',

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import AppLoading from 'expo-app-loading';
+//import AppLoading from 'expo-app-loading';
 import { StatusBar } from 'expo-status-bar';
 import AppStack from './routes/AppStack';
-import { Poppins_300Ligth, Poppins_900Black , Poppins_500Medium } from '@expo-google-fonts/poppins';
+//import { Poppins_300Ligth, Poppins_900Black , Poppins_500Medium } from '@expo-google-fonts/poppins';
 //import {Aclonica_400Regular, useFonts} from '@expo-google-fonts/aclonica';
 import { View, Text } from 'react-native';
 
