@@ -16,11 +16,11 @@ export default function Title({action}){
   }
 
   return(
-    <View style={styles.conteiner}>
+    <View style={styles.container}>
       <View style={styles.content}>
-        {action && (<RectButton onPress={handleGoBack}><Image style={styles.icons}source={arrow}/></RectButton>)}
+        {action && (<RectButton onPress={handleGoBack}><Image style={styles.icons} source={arrow}/></RectButton>)}
         <View style={styles.title}>
-          <Text style={styles.titleText}>Que País é Esse?</Text>
+          <Text style={styles.titleText}>Que país é esse?</Text>
           <Image source={globe} style={[styles.iconTitle]}/>
         </View>
         
@@ -36,11 +36,11 @@ export default function Title({action}){
 }
 
 const styles = StyleSheet.create({
-  conteiner: {
+  container: {
     width: "100%",
     padding: 20,
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   content: {
     width: '90%',
@@ -50,8 +50,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   icons: {
-    width: 20,
-    height: 20,
+    width: 25,
+    height: 25,
+    marginRight: 15
   },
   title: {
     
@@ -66,7 +67,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'purple',
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    margin: 10
   },
   iconTitle: {
     marginLeft: 10,

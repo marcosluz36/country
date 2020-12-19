@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, Image, Text, View, Dimensions} from 'react-native';
+import Constants from 'expo-constants';
 import Title from '../components/Title';
 
 
@@ -47,33 +48,42 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F2F5F5',
-    paddingVertical: 20,
+    paddingTop: Constants.statusBarHeight
   },
   header: {
     flex: 3,
     alignItems: 'center',
-    borderBottomColor: 'black',
+    justifyContent: 'space-around',
+    borderTopColor: '#999',
+    borderBottomColor: '#999',
+    borderTopWidth: 1,
     borderBottomWidth: 1,
+    // backgroundColor: '#e6e6e6'
   },
   image:{
     alignSelf: 'center',
-    flex: 1,
+    flex: 2,
     resizeMode: 'contain',
     width: 224,
-    height: 168
+    height: 168,
+    marginTop: 10
   },
   name: {
     flex: 1,
     fontSize: 32,
-    marginVertical: 10
+    marginVertical: 10,
+    // backgroundColor: 'red',
+    alignSelf: 'center',
+    textAlignVertical: 'center'
   },
   results:{
-    flex: 3,
+    flex: 5,
     alignSelf: 'center',
     width: '90%',
     flexDirection: 'row',
     // justifyContent: 'center',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    //backgroundColor: 'lightgreen'
   },
   lines: {
     flex: 1,
@@ -90,7 +100,7 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     color: 'purple',
     // marginBottom: 
