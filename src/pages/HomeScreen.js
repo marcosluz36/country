@@ -25,24 +25,56 @@ export default function HomeScreen() {
   const navigation = useNavigation();
 
   useEffect(() => {
-    api.get("all").then((resp)=>{
-      const data = resp.data.filter(c=>c.region.toLowerCase().includes("urop"))
-      setCountries(data)
-    })
+    
   },[])
 
-  function setCountry(text) {
+  async function setCountry(text) {
     setIsLoaded(false)
-    api.get(`${searchOption}/${text}`).then((resp) => {
-      //if(text.length>=3){
-      setCountries(resp.data)
+    let textLower = text.toLowerCase()
+    try{
 
-    }).catch((e) => {
+      if(searchOption=='region'){
+        const resp = await api.get("all")
+        const data = resp.data.filter(c=>c.region.toLowerCase().includes(textLower))
+        setCountries(data)
+
+      }else if(searchOption=='currency'){
+        const resp = await api.get("all")
+        const data = resp.data.filter(c=>{
+          //se currencies daquele país contem algo do texto que está sendo escrito
+          let contem = false 
+          
+          //percorrendo cada uma das moedas que um país pode ter
+          c.currencies.forEach((elem)=>{ 
+
+            //verificando se o texto está contido em algum dos atributos daquela moeda (code, name ou symbol)
+            if((elem.code && elem.code.toLowerCase().includes(textLower))
+              || (elem.name && elem.name.toLowerCase().includes(textLower))
+              || (elem.symbol && elem.symbol.toLowerCase().includes(textLower))){
+
+                contem = true
+            }
+          })
+          
+          
+          return contem
+
+        })
+
+        
+        setCountries(data)
+
+      }else{ //para o restante das pesquisas
+        const resp = await api.get(`${searchOption}/${textLower}`)
+        setCountries(resp.data)
+      }
+
+
+    }catch(e){ //caso a pesquisa não exista ou dê algum erro
       setCountries([])
-      
-    }).finally(()=>{
+    }finally{ //parar de mostrar o ícone carregando...
       setIsLoaded(true)
-    })
+    }
       
   }
 
@@ -60,18 +92,18 @@ export default function HomeScreen() {
           <Picker
             selectedValue= {searchOption}
             style={{width: "100%", fontSize: 23}}
-            onValueChange={(itemValue)=>setSearchOption(itemValue)
-             }
+            onValueChange={(itemValue)=>setSearchOption(itemValue)}
           >
             <Picker.Item  label="Nome" value="name"/>
-            <Picker.Item  label="Região" value="region"/>
             <Picker.Item  label="Capital" value="capital"/>
+            <Picker.Item  label="Região" value="region"/>
+            <Picker.Item  label="Moeda" value="currency"/>
     
           </Picker>
         </View>
       </View>
         
-      <ScrollView style={[styles.list/*, {backgroundColor: !isLoaded?"#58F":null}*/]}>
+      <ScrollView style={styles.list}>
         <View style={styles.listContainer}>
           {isLoaded?
             countries.map((e,idx)=>{
@@ -82,6 +114,13 @@ export default function HomeScreen() {
                   break;
                 case 'region':
                   comp = e.region;
+                  break;
+                case 'currency':
+                  let moedas = []
+                  e.currencies.forEach((moeda)=>{
+                    moedas.push(moeda.name)
+                  })
+                  comp = moedas.join(' & \n')
                   break;
                 default:
                   break
@@ -124,18 +163,20 @@ const styles = StyleSheet.create({
     borderColor: '#74B', 
     borderWidth: 1,
     paddingHorizontal: 10,
-    fontSize: fontSizeGeral,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#444',
   },
   pickerView:{
     width: '100%',
     height: heightSearch,
-    marginTop: 12,
+    marginTop: 2,
     borderRadius: borderRadiusGeral,
     borderWidth: 1,
     borderColor: 'gray',
     fontSize: fontSizeGeral,
-    color: 'purple',
-    backgroundColor: '#74B'
+    justifyContent: 'center',
+    backgroundColor: '#87C9'
   },
 
   list:{
